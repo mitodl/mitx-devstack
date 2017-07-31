@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
   # Install and configure salt
   config.vm.provision :salt do |salt|
     salt.minion_config = 'minion.conf'
-    salt.bootstrap_options = '-U -Z -b git'
+    salt.bootstrap_options = '-U -Z -p git'
     salt.install_type = 'git'
     salt.masterless = true
     salt.colorize = true
