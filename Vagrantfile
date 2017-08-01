@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
     vb.memory = "4096"
   end
   # Install and configure salt
-  config.vm.provision :shell, inline: 'sudo apt-get install -y git python-pip && sudo pip install gitpython'
+  config.vm.provision :shell, inline: 'sudo apt-get install -y git python-pip && sudo pip install gitpython testinfra'
   config.vm.provision :salt do |salt|
     salt.minion_config = 'minion.conf'
     salt.bootstrap_options = '-U -Z'
