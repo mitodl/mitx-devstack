@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "ubuntu-16.04-amd64-virtualbox.box"
   config.vm.define "mitodl_ficus" do |mitodl_ficus|
   end
   # https://wiki.libvirt.org/page/Virtio
@@ -15,21 +15,9 @@ Vagrant.configure("2") do |config|
   config.vm.network :forwarded_port, guest: 9200, host: 9200  # Elasticsearch
   config.vm.network :forwarded_port, guest: 18080, host: 18080  # Forums
   config.vm.network :forwarded_port, guest: 9876, host: 9876  # ORA2 Karma tests
-  # Mounted folders
   config.vm.hostname = "mitodlficus"
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
     vb.memory = "4096"
-  end
-  # Install and configure salt
-  config.vm.provision :shell, inline: 'sudo apt-get install -y git python-pip && sudo pip install gitpython testinfra'
-  config.vm.provision :salt do |salt|
-    salt.minion_config = 'minion.conf'
-    salt.bootstrap_options = '-U -Z'
-    salt.install_type = 'git'
-    salt.masterless = true
-    salt.colorize = true
-    salt.verbose = true
-    salt.run_highstate = true
   end
 end
