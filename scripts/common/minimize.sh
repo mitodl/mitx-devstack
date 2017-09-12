@@ -17,4 +17,3 @@ fi
 sudo /sbin/swapoff "$swap_device"
 sudo dd if=/dev/zero of="$swap_device" bs=1M || :
 sudo /sbin/mkswap ${swap_device_label:+-L "$swap_device_label"} ${swap_device_uuid:+-U "$swap_device_uuid"} "$swap_device"
-
