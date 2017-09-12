@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu-16.04-amd64-virtualbox.box"
+  config.vm.box = "mitodlficus-devstack-virtualbox.box"
   config.vm.define "mitodl_ficus" do |mitodl_ficus|
   end
   # https://wiki.libvirt.org/page/Virtio

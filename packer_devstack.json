@@ -45,13 +45,14 @@
     "scripts": [
       "scripts/common/vagrant.sh",
       "scripts/common/pkg.sh",
+      "scripts/ubuntu/virtualbox.sh",
       "scripts/ubuntu/cleanup.sh",
       "scripts/common/minimize.sh"
     ]
   },
   {
     "type": "salt-masterless",
-    "local_state_tree": "/Users/sar/Documents/gitCode/mitodl/salt-ops/salt",
+    "local_state_tree": "~/Documents/gitCode/mitodl/salt-ops/salt",
     "bootstrap_args": "-U -Z",
     "minion_config": "conf/minion.conf"
   }
