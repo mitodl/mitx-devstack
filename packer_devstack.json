@@ -52,7 +52,7 @@
   },
   {
     "type": "salt-masterless",
-    "local_state_tree": "~/Documents/gitCode/mitodl/salt-ops/salt",
+    "local_state_tree": "salt",
     "bootstrap_args": "-U -Z",
     "minion_config": "conf/minion.conf"
   }
