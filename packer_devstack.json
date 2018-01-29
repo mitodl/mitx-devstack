@@ -7,7 +7,7 @@
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
     "output_directory": "output-ubuntu-16.04-amd64-{{build_type}}",
     "headless": "{{user `headless`}}",
-    "vm_name": "mitodlficus-ubuntu-16.04-amd64",
+    "vm_name": "mitodlginkgo-ubuntu-16.04-amd64",
     "http_directory": "http",
     "boot_wait": "5s",
     "boot_command": [
@@ -52,18 +52,16 @@
   },
   {
     "type": "salt-masterless",
-    "local_state_tree": "salt",
+    "local_state_tree": "/srv/salt",
     "bootstrap_args": "-U -Z",
     "minion_config": "conf/minion.conf"
   }
   ],
   "post-processors": [{
     "type": "vagrant",
-    "compression_level": "{{user `compression_level`}}",
-    "output": "mitodlficus-devstack-{{.Provider}}.box"
+    "output": "mitodlginkgo-devstack-{{.Provider}}.box"
   }],
   "variables": {
-    "compression_level": "6",
     "headless": "true",
     "iso_checksum": "a06cd926f5855d4f21fb4bc9978a35312f815fbda0d0ef7fdc846861f4fc4600",
     "iso_checksum_type": "sha256",

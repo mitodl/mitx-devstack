@@ -9,8 +9,8 @@ sudo -u www-data /edx/bin/python.edxapp ./manage.py cms --settings=aws import /e
 SCRIPT
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "mitodlficus-devstack-virtualbox.box"
-  config.vm.define "mitodl_ficus" do |mitodl_ficus|
+  config.vm.box = "mitodlginkgo-devstack-virtualbox.box"
+  config.vm.define "mitodl_ginkgo" do |mitodl_ginkgo|
   end
   # https://wiki.libvirt.org/page/Virtio
   config.vm.provider :virtualbox do |vb|
@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
   config.vm.network :forwarded_port, guest: 9876, host: 9876  # ORA2 Karma tests
   config.vm.synced_folder '/tmp/edx', '/tmp/edx', mount_options: ['dmode=775,fmode=664']
   config.vm.provision "shell", inline: $script, args: ENV['course']
-  config.vm.hostname = "mitodlficus"
+  config.vm.hostname = "mitodlginkgo"
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
     vb.memory = "4096"
