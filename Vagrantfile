@@ -2,10 +2,10 @@
 # vi: set ft=ruby :
 
 $script = <<SCRIPT
-COURSE=#{ENV['course']}
-sudo chown -R www-data /tmp/edx/$COURSE/
+COURSE=#{ENV['COURSE']}
+sudo chown -R www-data /opt/$COURSE/
 cd /edx/app/edxapp/edx-platform
-sudo -u www-data /edx/bin/python.edxapp ./manage.py cms --settings=aws import /edx/var/edxapp/data /tmp/edx/$COURSE
+sudo -u www-data /edx/bin/python.edxapp ./manage.py cms --settings=aws import /edx/var/edxapp/data /opt/$COURSE
 SCRIPT
 
 Vagrant.configure("2") do |config|
@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
   config.vm.network :forwarded_port, guest: 9200, host: 9200  # Elasticsearch
   config.vm.network :forwarded_port, guest: 18080, host: 18080  # Forums
   config.vm.network :forwarded_port, guest: 9876, host: 9876  # ORA2 Karma tests
-  config.vm.synced_folder '/tmp/edx', '/tmp/edx', mount_options: ['dmode=775,fmode=664']
+  config.vm.synced_folder './', '/opt', mount_options: ['dmode=775,fmode=664']
   config.vm.provision "shell", inline: $script, args: ENV['course']
   config.vm.hostname = "mitodlginkgo"
   config.vm.provider "virtualbox" do |vb|
